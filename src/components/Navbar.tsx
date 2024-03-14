@@ -15,16 +15,15 @@ const Navbar = async () => {
 
   return (
     <>
-      (
       <MotionNav
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: -10, opacity: 1 }}
         transition={{ type: "teen", duration: 0.3 }}
+        className="bg-nav w-full"
       >
         <nav
           className="m:px-16 text-xl font-bold py-4 px-8 flex justify-between items-center gap-2
-    flex-wrap bg-[#161921] text-white border-b border-l-2 border-r-2  rounded
-    "
+    flex-wrap  text-white border-b-2 border-l-2 border-r-2  rounded-md border-white"
         >
           <h1 className="text-2xl font-extrabold">
             <MotionDiv
@@ -39,10 +38,16 @@ const Navbar = async () => {
               whileHover={{ scale: 1.3 }}
             >
               <div className="flex justify-center">
-                <Link className="hover:text-black flex " href="/">
-                  <Image src="./logo.svg" alt="logo" width={50} height={50} />
+                <Link className="hover:text-black flex  " href="/">
+                  <Image
+                    className="animate-spinSlow"
+                    src="/cherryblossom.png"
+                    alt="logo"
+                    width={50}
+                    height={50}
+                  />
 
-                  <h1 className="ml-2 mt-1 text-4xl font-extrabold">ZTAI</h1>
+                  <h1 className="ml-2 mt-1 text-4xl font-extrabold">KRIS</h1>
                 </Link>
               </div>
             </MotionDiv>
@@ -137,7 +142,6 @@ const Navbar = async () => {
           </div>
         </nav>
       </MotionNav>
-      )
     </>
   )
 }

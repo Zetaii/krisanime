@@ -14,7 +14,7 @@ function Hero() {
       <div className="flex-1 flex flex-col gap-10">
         <div>
           <Image
-            src="./logo.svg"
+            src="/cherryblossom.png"
             alt="logo"
             width={101}
             height={101}
@@ -40,7 +40,7 @@ function Hero() {
 
       <div className="lg:flex-1 relative w-full h-[50vh] justify-center">
         <Image
-          src="/anime.png"
+          src="/sailor.png"
           alt="anime"
           sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 400px"
           fill

@@ -3,8 +3,8 @@ import Image from "next/image"
 function Footer() {
   return (
     <footer
-      className="animate-my-glow-combined sm:px-16 py-4 px-8 flex justify-between items-center gap-2 flex-wrap
-    bg-[#161921] "
+      className=" sm:px-16 py-4 px-8 flex justify-between items-center gap-2 flex-wrap border-2 mt-3 rounded-md border-white
+    bg-[#cdabcd] "
     >
       <p className="text-base font-bold text-white">@2024 ZTAI Anime</p>
       {/* <Image

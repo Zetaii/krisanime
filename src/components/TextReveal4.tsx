@@ -49,7 +49,8 @@ export const TextReveal4 = ({ children, width = "fit-content" }: Props) => {
           bottom: 4,
           left: 0,
           right: 30,
-          background: "#10131c",
+          background: "white",
+          opacity: 0.2,
           zIndex: 20,
           borderRadius: "20px",
         }}

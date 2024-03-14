@@ -84,7 +84,7 @@ function AnimeCard({ anime, index }: Prop) {
               sizes="100vw"
               className="object-contain"
             />
-            <p className="text-base font-bold text-[#FFAD49]">{anime.score}</p>
+            <p className="text-base font-bold text-white">{anime.score}</p>
           </div>
         </div>
       </div>

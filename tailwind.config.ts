@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        nav: "url('/hero.png')",
+      },
       colors: {
         "custom-glow": "rgba(255, 255, 255, 0.5)", // Customize the glow color
         border: "hsl(var(--border))",
@@ -61,12 +64,17 @@ const config = {
       },
       keyframes: {
         "bar-glow": {
-          "0%": { boxShadow: "2px 0 40px 0px rgb(100,200,255)" },
-          "25%": { boxShadow: "2px 0 40px 1px rgb(100,200,255)" },
-          "50%": { boxShadow: "2px 0 40px 2px rgb(100,200,255)" },
-          "75%": { boxShadow: " 2px 0 40px 1px rgb(100,200,255)" },
-          "100%": { boxShadow: "2px 0 40px 0px rgb(100,200,255)" },
+          "0%": { boxShadow: "1px 0 10px 0px rgb(255,255,255)" },
+          "25%": { boxShadow: "1px 0 10px 3px rgb(255,255,255)" },
+          "50%": { boxShadow: "1px 0 10px 5px rgb(255,255,255)" },
+          "75%": { boxShadow: " 1px 0 10px 3px rgb(255,255,255)" },
+          "100%": { boxShadow: "1px 0 10px 0px rgb(255,255,255)  " },
         },
+        spinSlow: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+
         blob: {
           "0%": { transform: "translate(0px, 0px) scale(1)" },
           "33%": { transform: "translate(30px, -50px) scale(1.1)" },
@@ -88,7 +96,7 @@ const config = {
         },
         bouncing: {
           "0%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(20px)" },
+          "50%": { transform: "translateY(15px)" },
           "100%": { transform: "translateY(0)" },
         },
         "my-glow-combined": {
@@ -129,9 +137,10 @@ const config = {
         "my-glow": "my-glow 1s ease-in-out infinite",
         "my-glow-reverse": "my-glow-reverse 1s ease-in-out infinite",
         "my-glow-combined": "my-glow-combined 1.2s ease-in-out infinite",
-        "bar-glow": "bar-glow 5s ease-in-out infinite",
-        bouncing: "bouncing 2.5s ease-in-out infinite",
+        "bar-glow": "bar-glow 3s ease-in-out infinite",
+        bouncing: "bouncing 2.7s ease-in-out infinite",
         blob: "blob 7s infinite",
+        spinSlow: "spinSlow 10s linear infinite",
       },
 
       boxShadow: {

@@ -3,6 +3,11 @@
 import MaxWidthWrapper from "@/src/components/MaxWidthWrapper"
 import { MotionDiv } from "@/src/components/Motion"
 import SearchBar from "@/src/components/SearchBar"
+import { TextReveal } from "@/src/components/TextReveal"
+import { TextReveal2 } from "@/src/components/TextReveal2"
+import { TextReveal3 } from "@/src/components/TextReveal3"
+import { TextReveal4 } from "@/src/components/TextReveal4"
+import { TextReveal5 } from "@/src/components/TextReveal5"
 import Image from "next/image"
 import React, { useEffect, useState } from "react"
 
@@ -527,7 +532,7 @@ const Page = () => {
     visible: { opacity: 1 },
   }
   return (
-    <MaxWidthWrapper className="wrapper font-semibold border-2 min-h-[90vh] rounded-md animate-my-glow-combined">
+    <MaxWidthWrapper className="wrapper font-semibold border-2 min-h-[90vh] rounded-md border-white">
       <SearchBar
         className="WatchAnime text-white max-h-[200px] overflow-y-hidden overflow-x-hidden scrollbar"
         handleSearch={handleSearch}
@@ -541,9 +546,11 @@ const Page = () => {
 
       <>
         <div className="text-white -ml-10 mt-20 min-h-52 ">
-          <h1 className="text-2xl font-bold -pt-10 -mt-2 border-b-2 title">
-            Currently Watching
-          </h1>
+          <TextReveal>
+            <h1 className="text-2xl font-bold -pt-10 -mt-2 border-b-2 title">
+              Currently Watching
+            </h1>
+          </TextReveal>
           {watching.length === 0 && <p> Nothing here yet </p>}
           <div>
             <ul className="cards">
@@ -563,7 +570,7 @@ const Page = () => {
                 >
                   <div
                     key={watching.mal_id}
-                    className="mt-6 text-sm leading-4 hover:bg-slate-600"
+                    className="mt-6 text-sm leading-4 hover:bg-[#b998b9] hover:rounded-md"
                   >
                     <li className="flex">
                       <a href={watching.url} target="_blank">
@@ -576,37 +583,45 @@ const Page = () => {
                         />
                       </a>
                       <div className="leading-5">
-                        <h1 className="font-bold text-lg -pt-2 pb-1">
-                          {watching.title}
-                        </h1>
-                        <p className="">
-                          Current Episode: {watching.currentEpisode}{" "}
-                          <input
-                            type="number"
-                            onChange={(e) =>
-                              handleEpisodeChangeWatching(e, watching.mal_id)
-                            }
-                            placeholder="#"
-                            className="border border-gray-300 rounded py-1 pl-1 w-12 text-sm h-5 text-center text-black"
-                            key={watching.mal_id}
-                            max={watching.episodes}
-                            min={0}
-                          />
-                        </p>{" "}
+                        <TextReveal2>
+                          <h1 className="font-bold text-lg -pt-2 pb-1">
+                            {watching.title}
+                          </h1>
+                        </TextReveal2>
+                        <TextReveal5>
+                          <p className="">
+                            Current Episode: {watching.currentEpisode}{" "}
+                            <input
+                              type="number"
+                              onChange={(e) =>
+                                handleEpisodeChangeWatching(e, watching.mal_id)
+                              }
+                              placeholder="#"
+                              className="border border-gray-300 rounded py-1 pl-1 w-12 text-sm h-5 text-center text-black"
+                              key={watching.mal_id}
+                              max={watching.episodes}
+                              min={0}
+                            />
+                          </p>
+                        </TextReveal5>
                         {/* Display current episode number */}
-                        <p>Total Episodes: {watching.episodes} </p>
-                        <p>
-                          Percentage Watched:{" "}
-                          {(
-                            (watching.currentEpisode / watching.episodes) *
-                            100
-                          ).toFixed(0)}
-                          %
-                        </p>
+                        <TextReveal4>
+                          <p>Total Episodes: {watching.episodes} </p>
+                        </TextReveal4>
+                        <TextReveal3>
+                          <p className="pb-2">
+                            Percentage Watched:{" "}
+                            {(
+                              (watching.currentEpisode / watching.episodes) *
+                              100
+                            ).toFixed(0)}
+                            %
+                          </p>
+                        </TextReveal3>
                         <div>
-                          <div className="bg-blue-500/20 h-4 rounded-full overflow-hidden animate-bar-glow">
+                          <div className="bg-blue-500/20 h-4 rounded-full overflow-hidden pb-2 animate-bar-glow">
                             <div
-                              className="bg-cyan-600 flex justify-center items-center"
+                              className="bg-cyan-600 flex justify-center items-center pb-2"
                               style={{
                                 width: `${Math.round(
                                   (watching.currentEpisode /
@@ -627,23 +642,25 @@ const Page = () => {
                           </div>
                         </div>
                         <div className="relative">
-                          <div className="absolute mt-[6px]  inset-0 bg-red-600 h-8 w-[164px] z-1 rounded blur-sm"></div>
+                          <div className="absolute mt-[14px]  inset-0 bg-red-500 h-8 w-[164px] z-1 rounded blur-sm"></div>
+
                           <button
-                            className=" relative bg-red-500 rounded-md p-1 hover:bg-slate-800 hover:text-white mt-2 mr-2 glow-on-hover"
+                            className=" relative text-red-600 bg-pink-300 rounded-md p-1 hover:bg-slate-800 hover:text-white mt-4 mr-2 glow-on-hover"
                             onClick={() => removeFromWatching(watching.mal_id)}
                           >
                             Remove from Watching
                           </button>
-                          <div className="absolute mt-[7px] ml-[168px] inset-0 bg-yellow-600 h-8 w-[130px] z-1 rounded blur-sm"></div>
+
+                          <div className="absolute mt-[14px] ml-[168px] inset-0 bg-yellow-200 h-8 w-[130px] z-1 rounded blur-sm"></div>
                           <button
-                            className="relative bg-yellow-600  rounded-md p-1  hover:bg-slate-800 hover:text-white mt-2 mr-2 glow-on-hover"
+                            className="relative text-yellow-200 bg-pink-300 opacity-  rounded-md p-1  hover:bg-slate-800 hover:text-white mt-4 mr-2 glow-on-hover"
                             onClick={() => addToWatchlist(watching, "watching")}
                           >
                             Add to Watchlist
                           </button>
-                          <div className="absolute mt-[7px] ml-[298px] inset-0 bg-emerald-600 h-8 w-[120px] z-1 rounded blur-sm "></div>
+                          <div className="absolute mt-[14px] ml-[298px] inset-0 bg-pink-600 h-8 w-[120px] z-1 rounded blur-sm "></div>
                           <button
-                            className="relative bg-emerald-700 rounded-md p-1  hover:bg-slate-800 hover:text-white mt-2 glow-on-hover  "
+                            className="relative text-pink-600 bg-pink-300 rounded-md p-1  hover:bg-slate-800 hover:text-white mt-4 glow-on-hover  "
                             onClick={() => addToFinished(watching, "watching")}
                           >
                             Add to Finished
@@ -659,9 +676,11 @@ const Page = () => {
         </div>
 
         <div className="text-white -ml-10 mt-5 mb-5 min-h-52">
-          <h1 className="font-bold text-2xl -pt-2 pb-1 border-b-2 title ">
-            Want to Watch
-          </h1>
+          <TextReveal2>
+            <h1 className="font-bold text-2xl -pt-2 pb-1 border-b-2 title ">
+              Want to Watch
+            </h1>
+          </TextReveal2>
           {watchlists.length === 0 && <p>Nothing here yet</p>}
           <div>
             <ul className="cards">
@@ -681,7 +700,7 @@ const Page = () => {
                 >
                   <div
                     key={watchlist.mal_id}
-                    className="mt-6 text-sm leading-4 hover:bg-slate-600"
+                    className="mt-6 text-sm leading-4 hover:bg-[#b998b9] rounded-md"
                   >
                     <li className="flex">
                       <a href={watchlist.url} target="_blank">
@@ -694,38 +713,47 @@ const Page = () => {
                         />
                       </a>
                       <div className="leading-5">
-                        <h1 className="font-bold text-lg -pt-2 pb-1">
-                          {watchlist.title}
-                        </h1>
-                        <p>
-                          Current Episode: {watchlist.currentEpisode}{" "}
-                          <input
-                            type="number"
-                            value={episodeNumbers[watchlist.mal_id] || ""}
-                            onChange={(e) =>
-                              handleEpisodeChange(e, watchlist.mal_id)
-                            }
-                            placeholder="#"
-                            className="border border-gray-300 rounded py-1 pl-1 w-12 text-sm h-5 text-center text-black"
-                            key={watchlist.mal_id}
-                            max={watchlist.episodes}
-                            min={0}
-                          />
-                        </p>{" "}
+                        <TextReveal3>
+                          <h1 className="font-bold text-lg -pt-2 pb-3">
+                            {watchlist.title}
+                          </h1>
+                        </TextReveal3>
+                        <TextReveal4>
+                          <p>
+                            Current Episode: {watchlist.currentEpisode}{" "}
+                            <input
+                              type="number"
+                              value={episodeNumbers[watchlist.mal_id] || ""}
+                              onChange={(e) =>
+                                handleEpisodeChange(e, watchlist.mal_id)
+                              }
+                              placeholder="#"
+                              className="border border-gray-300 rounded py-1 pl-1 w-12 text-sm h-5 text-center text-black"
+                              key={watchlist.mal_id}
+                              max={watchlist.episodes}
+                              min={0}
+                            />
+                          </p>
+                        </TextReveal4>
                         {/* Display current episode number */}
-                        <p>Total Episodes: {watchlist.episodes} </p>
-                        <p>
-                          Percentage Watched:{" "}
-                          {(
-                            (watchlist.currentEpisode / watchlist.episodes) *
-                            100
-                          ).toFixed(0)}
-                          %
-                        </p>
+                        <TextReveal5>
+                          <p>Total Episodes: {watchlist.episodes} </p>
+                        </TextReveal5>
+                        <TextReveal3>
+                          <p className="pb-2">
+                            Percentage Watched:{" "}
+                            {(
+                              (watchlist.currentEpisode / watchlist.episodes) *
+                              100
+                            ).toFixed(0)}
+                            %
+                          </p>
+                        </TextReveal3>
+
                         <div>
-                          <div className="bg-blue-500/20 h-4 rounded-full overflow-hidden animate-bar-glow">
+                          <div className="bg-blue-500/20 h-4 rounded-full overflow-hidden animate-bar-glow mb-2">
                             <div
-                              className="bg-cyan-600 flex justify-center items-center"
+                              className="bg-cyan-600 flex justify-center items-center "
                               style={{
                                 width: `${Math.round(
                                   (watchlist.currentEpisode /
@@ -748,25 +776,25 @@ const Page = () => {
                         <div className="relative">
                           <div className="absolute mt-[6px] -ml-1 inset-0 bg-red-600 h-8 w-[176px] z-1 rounded blur-sm"></div>
                           <button
-                            className="relative bg-red-500 rounded-md p-1  hover:bg-slate-800 hover:text-white mt-2 mr-2 glow-on-hover"
+                            className="relative bg-pink-300 text-red-600 rounded-md p-1  hover:bg-slate-800 hover:text-white mt-2 mr-2 glow-on-hover"
                             onClick={() =>
                               removeFromWatchlist(watchlist.mal_id)
                             }
                           >
                             Remove from Watchlist
                           </button>
-                          <div className="absolute mt-[6px] ml-[164px] inset-0 bg-blue-400 h-8 w-[134px] z-1 rounded blur-sm"></div>
+                          <div className="absolute mt-[6px] ml-[166px] inset-0 bg-yellow-300 h-8 w-[134px] z-1 rounded blur-sm"></div>
                           <button
-                            className="relative bg-blue-400 rounded-md p-1  hover:bg-slate-800 hover:text-white mt-2 mr-2 glow-on-hover"
+                            className="relative bg-pink-300 rounded-md p-1 text-yellow-300 hover:bg-slate-800 hover:text-white mt-2 mr-2 glow-on-hover"
                             onClick={() =>
                               addToWatching(watchlist, "watchlist")
                             }
                           >
                             Add to Watching
                           </button>
-                          <div className="absolute mt-[6px] ml-[296px] inset-0 bg-emerald-600 h-8 w-[124px] z-1 rounded blur-sm "></div>
+                          <div className="absolute mt-[6px] ml-[296px] inset-0 bg-pink-600 h-8 w-[124px] z-1 rounded blur-sm "></div>
                           <button
-                            className="relative bg-emerald-700 rounded-md p-1  hover:bg-slate-800 hover:text-white mt-2 glow-on-hover"
+                            className="relative bg-pink-300 text-pink-600 rounded-md p-1  hover:bg-slate-800 hover:text-white mt-2 glow-on-hover"
                             onClick={() =>
                               addToFinished(watchlist, "watchlist")
                             }
@@ -783,9 +811,11 @@ const Page = () => {
           </div>
         </div>
         <div className="text-white -ml-10 mb-5 pb-30 min-h-52">
-          <h1 className="font-bold text-2xl -pt-2  border-b-2 title">
-            Finished
-          </h1>
+          <TextReveal3>
+            <h1 className="font-bold text-2xl -pt-2  border-b-2 title">
+              Finished
+            </h1>
+          </TextReveal3>
           {finished.length === 0 && <p>Nothing here yet</p>}
           <div>
             <ul className="cards">
@@ -805,7 +835,7 @@ const Page = () => {
                 >
                   <div
                     key={finished.mal_id}
-                    className="mt-6 text-sm leading-4 hover:bg-slate-600"
+                    className="mt-6 text-sm leading-4 hover:bg-[#b998b9] rounded-md"
                   >
                     <li className="flex">
                       <a href={finished.url} target="_blank">
@@ -818,38 +848,46 @@ const Page = () => {
                         />
                       </a>
                       <div className="leading-5">
-                        <h1 className="font-bold text-lg -pt-2 pb-1">
-                          {finished.title}
-                        </h1>
-                        <p>
-                          Current Episode: {finished.currentEpisode}{" "}
-                          <input
-                            type="number"
-                            value={episodeNumbers[finished.mal_id] || ""}
-                            onChange={(e) =>
-                              handleEpisodeChangeFinished(e, finished.mal_id)
-                            }
-                            placeholder="#"
-                            className="border border-gray-300 rounded py-1 pl-1 w-12 text-sm h-5 text-center text-black"
-                            key={finished.mal_id}
-                            max={finished.episodes}
-                            min={0}
-                          />
-                        </p>{" "}
+                        <TextReveal4>
+                          <h1 className="font-bold text-lg -pt-2 pb-1">
+                            {finished.title}
+                          </h1>
+                        </TextReveal4>
+                        <TextReveal5>
+                          <p>
+                            Current Episode: {finished.currentEpisode}{" "}
+                            <input
+                              type="number"
+                              value={episodeNumbers[finished.mal_id] || ""}
+                              onChange={(e) =>
+                                handleEpisodeChangeFinished(e, finished.mal_id)
+                              }
+                              placeholder="#"
+                              className="border border-gray-300 rounded py-1 pl-1 w-12 text-sm h-5 text-center text-black"
+                              key={finished.mal_id}
+                              max={finished.episodes}
+                              min={0}
+                            />
+                          </p>
+                        </TextReveal5>
                         {/* Display current episode number */}
-                        <p>Total Episodes: {finished.episodes} </p>
-                        <p>
-                          Percentage Watched:{" "}
-                          {(
-                            (finished.currentEpisode / finished.episodes) *
-                            100
-                          ).toFixed(0)}
-                          %
-                        </p>
+                        <TextReveal4>
+                          <p>Total Episodes: {finished.episodes} </p>
+                        </TextReveal4>
+                        <TextReveal3>
+                          <p className="pb-2">
+                            Percentage Watched:{" "}
+                            {(
+                              (finished.currentEpisode / finished.episodes) *
+                              100
+                            ).toFixed(0)}
+                            %
+                          </p>
+                        </TextReveal3>
                         <div>
-                          <div className="bg-blue-500/20 h-4 rounded-full overflow-hidden animate-bar-glow">
+                          <div className="bg-blue-500/20 h-4 rounded-full overflow-hidden animate-bar-glow mb-2">
                             <div
-                              className="bg-cyan-600 flex justify-center items-center "
+                              className="bg-cyan-600 flex justify-center items-center"
                               style={{
                                 width: `${Math.round(
                                   (finished.currentEpisode /
@@ -872,21 +910,21 @@ const Page = () => {
                         <div className="relative">
                           <div className="absolute mt-[6px] -ml-1 inset-0 bg-red-600 h-8 w-[172px] z-1 rounded blur"></div>
                           <button
-                            className="relative bg-red-500 rounded-md p-1  hover:bg-slate-800 hover:text-white mt-2 mr-2 glow-on-hover"
+                            className="relative bg-pink-300 text-red-500 rounded-md p-1  hover:bg-slate-800 hover:text-white mt-2 mr-2 glow-on-hover"
                             onClick={() => removeFromFinished(finished.mal_id)}
                           >
                             Remove from Finished
                           </button>
-                          <div className="absolute mt-[6px] ml-[162px] inset-0 bg-blue-400 h-8 w-[134px] z-1 rounded blur"></div>
+                          <div className="absolute mt-[6px] ml-[162px] inset-0 bg-yellow-300 h-8 w-[134px] z-1 rounded blur"></div>
                           <button
-                            className="relative bg-blue-400 rounded-md p-1  hover:bg-slate-800 hover:text-white mt-2 mr-2 glow-on-hover"
+                            className="relative bg-pink-300 rounded-md p-1 text-yellow-300 hover:bg-slate-800 hover:text-white mt-2 mr-2 glow-on-hover"
                             onClick={() => addToWatching(finished, "finished")}
                           >
                             Add to Watching
                           </button>
-                          <div className="absolute mt-[6px] ml-[290px] inset-0 bg-yellow-600 h-8 w-[124px] z-1 rounded blur "></div>
+                          <div className="absolute mt-[6px] ml-[290px] inset-0 bg-pink-600 h-8 w-[124px] z-1 rounded blur "></div>
                           <button
-                            className="relative bg-yellow-600 rounded-md p-1  hover:bg-slate-800 hover:text-white mt-2 glow-on-hover"
+                            className="relative bg-pink-300 rounded-md p-1 text-pink-500 hover:bg-slate-800 hover:text-white mt-2 glow-on-hover"
                             onClick={() => addToWatchlist(finished, "finished")}
                           >
                             Add to Watchlist

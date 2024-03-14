@@ -8,7 +8,7 @@ interface Props {
   width?: "fit-content" | "100%"
 }
 
-export const TextReveal = ({ children, width = "fit-content" }: Props) => {
+export const TextReveal5 = ({ children, width = "fit-content" }: Props) => {
   const ref = useRef(null)
   const isInView = useInView(ref)
 
@@ -31,7 +31,7 @@ export const TextReveal = ({ children, width = "fit-content" }: Props) => {
         }}
         initial="hidden"
         animate={mainControls}
-        transition={{ duration: 0.5, delay: 1 }}
+        transition={{ duration: 0.5, delay: 1.4 }}
       >
         {children}
       </motion.div>
@@ -42,15 +42,15 @@ export const TextReveal = ({ children, width = "fit-content" }: Props) => {
         }}
         initial="hidden"
         animate={slideControls}
-        transition={{ duration: 0.4, ease: "easeIn", delay: 0.8 }}
+        transition={{ duration: 0.4, ease: "easeIn", delay: 1.2 }}
         style={{
           position: "absolute",
-          top: 10,
-          bottom: 10,
-          left: 10,
-          right: 10,
-          opacity: 0.2,
+          top: 4,
+          bottom: 4,
+          left: 0,
+          right: 30,
           background: "white",
+          opacity: 0.2,
           zIndex: 20,
           borderRadius: "20px",
         }}

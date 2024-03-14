@@ -47,7 +47,7 @@ const SearchBar = (props: any) => {
           <div className="ml-auto ">
             <form onSubmit={handleSubmit} className="pt-3">
               <input
-                className=" mt-2 mb-2 pl-2 rounded-md bg-slate-500 text-white border-2 b border-white w-50 h-10 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-slate-500"
+                className=" mt-2 mb-2 pl-2 rounded-md bg-gray-50 text-gray-500 border-2 b border-pink-400 w-50 h-10 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:border-pink-500"
                 placeholder="Search for an anime... "
                 required
                 value={props.search}
